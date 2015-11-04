@@ -87,26 +87,3 @@ while True:
         time.sleep(sleep/len(nodes))
 
     sys.stdout.flush()
-    
-    #time.sleep(15)
-    #print t['statuses'][0].keys()
-    #u = t['statuses'][0]['user']
-    #del t['statuses'][0]['user']
-    #print t['statuses'][0].keys()
-    #print u.keys()
-    #print t['statuses'][0]['id']
-    #print datetime.datetime.strptime(t['statuses'][0]['created_at'], '%a %b %d %H:%M:%S %z %Y')
-    #print datetime.datetime.strptime(t['statuses'][0]['created_at'], '%a %b %d %H:%M:%S +0000 %Y')
-    #print t['statuses'][0]['text']
-    #print t['statuses'][0]['geo']
-    #print t['statuses'][0]['place']
-    #print t['statuses'][0]['user'].keys()
-    #print t['statuses'][0]['user']['id']
-    #print t['statuses'][0]['user']['name']
-    #print t['statuses'][0]['user']['screen_name']
-    #conn.close()
-    #exit()
-    #time.sleep(15)
-
-
-
