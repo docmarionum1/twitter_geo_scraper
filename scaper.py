@@ -13,6 +13,7 @@ conn = sqlite3.connect('twitter.db')
 def signal_handler(signal, frame):
     # Close connection on interrupt
     conn.close()
+    sys.stdout.flush()
     sys.exit(0)
 
 signal.signal(signal.SIGINT, signal_handler)
@@ -85,6 +86,7 @@ while True:
         # Sleep between nodes
         time.sleep(sleep/len(nodes))
 
+    sys.stdout.flush()
     
     #time.sleep(15)
     #print t['statuses'][0].keys()
