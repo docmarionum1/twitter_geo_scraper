@@ -46,7 +46,7 @@ while True:
             continue
 
         # Update since 
-        node['since'] = t['search_metadata']['max_id_str']
+       # node['since'] = t['search_metadata']['max_id_str']
 
         # Print status
         print node['geocode'], len(t['statuses']), str(datetime.datetime.now())
@@ -78,10 +78,16 @@ while True:
             ))
 
         # Add to DB
-        cursor = conn.cursor()
-        cursor.executemany('INSERT OR IGNORE INTO tweets VALUES (?, ?, ?, ?, ?, ?)', tweets)
-        cursor.executemany('INSERT OR IGNORE INTO users VALUES (?, ?, ?)', users)
-        conn.commit()
+        try:
+            cursor = conn.cursor()
+            cursor.executemany('INSERT OR IGNORE INTO tweets VALUES (?, ?, ?, ?, ?, ?)', tweets)
+            cursor.executemany('INSERT OR IGNORE INTO users VALUES (?, ?, ?)', users)
+            conn.commit()
+
+            node['since'] = t['search_metadata']['max_id_str']
+        except:
+            time.sleep(60)
+            conn = sqlite3.connect('twitter.db')
 
         # Sleep between nodes
         time.sleep(sleep/len(nodes))
