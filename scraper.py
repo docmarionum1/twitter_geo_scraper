@@ -1,4 +1,6 @@
 from auth import getTwitter
+from setup import setup
+
 import time
 import datetime
 import csv
@@ -6,6 +8,13 @@ import json
 import sqlite3
 import signal
 import sys
+import os
+
+# create DB if does not exist
+if not os.path.isfile(os.getenv('PWD') + '/twitter.db'):
+    print 'creating DB'
+    setup()
+
 
 # Connect to DB
 conn = sqlite3.connect('twitter.db')
